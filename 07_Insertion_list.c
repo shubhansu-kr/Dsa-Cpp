@@ -57,6 +57,14 @@ struct node *end_insert(struct node *base,int data)
     return base;
 }
 
+struct node * node_insert (struct node *p, struct node * base , int data) {
+    struct node * ptr = (struct node*) malloc (sizeof (struct node)) ;
+    ptr->data = data ;
+    ptr->next = p->next ;
+    p->next = ptr ;
+    return base ;    
+}
+
 int main()
 {
     struct node *base;
@@ -91,6 +99,10 @@ int main()
     printf("\n");
 
     base = end_insert(base, 36);
+    traversal(base);
+    printf("\n");
+
+    base = node_insert(n2,base,36);
     traversal(base);
     printf("\n");
 
