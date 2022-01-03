@@ -48,16 +48,19 @@ void push(struct stack *ptr, int a)
     }
 }
 
-void pop(struct stack *ptr)
+int pop(struct stack *ptr)
 {
     if (isEmpty(ptr))
     {
         printf("Stack is already empty \n");
+        return -1;
     }
     else
     {
+        int temp = ptr->Arr[ptr->top];
         ptr->top--;
-        printf("Poped out\n");
+        // printf("Poped out\n");
+        return temp;
     }
 }
 
@@ -67,7 +70,7 @@ void display(struct stack *ptr)
     {
         printf(" %d", ptr->Arr[i]);
     }
-    printf ("\n") ;
+    printf("\n");
 }
 
 int main()
@@ -102,7 +105,7 @@ int main()
 
     display(S);
 
-    pop(S) ;
+    printf("Pop - %d\n", pop(S));
     display(S);
 
     return 0;
