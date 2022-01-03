@@ -120,6 +120,17 @@ int pop(struct stack *ptr)
         return temp;
     }
 }
+
+void stacktop(struct stack *ptr)
+{
+    printf("Stack top - %d \n", ptr->Arr[ptr->top]);
+}
+
+void stackbottom(struct stack *ptr)
+{
+    printf("Stack bottom - %d \n", ptr->Arr[0]);
+}
+
 int main()
 {
     struct stack *s1 = (struct stack *)malloc(sizeof(struct stack));
@@ -130,6 +141,9 @@ int main()
     peekstack(s1, 1);
     peekstack(s1, 2);
     peekstack(s1, 3);
+
+    stackbottom(s1);
+    stacktop(s1);
 
     return 0;
 }
