@@ -103,7 +103,7 @@ void control(struct stack *ptr, char a, char *p, int &n)
 
 char *Infixtopostfix(char *a)
 {
-    char *postfix = (char *)malloc(strlen(a));
+    char *postfix = (char *)malloc(strlen(a) + 1);
     struct stack *E = (struct stack *)malloc(sizeof(struct stack));
     setstack(E);
     int j = 0;
@@ -128,6 +128,8 @@ char *Infixtopostfix(char *a)
             j++;
         }
     }
+    postfix[j] = '\0';
+    
     return postfix;
 }
 
