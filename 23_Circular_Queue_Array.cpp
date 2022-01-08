@@ -35,7 +35,7 @@ int isEmpty(struct Queue *ptr)
 
 int isFull(struct Queue *ptr)
 {
-    if (abs(ptr->rear - ptr->front) == ptr->size)
+    if (abs((ptr->rear + 1) % ptr->size == ptr->front) == ptr->size)
     {
         return 1;
     }
@@ -114,8 +114,9 @@ int count(struct Queue *ptr)
     {
         return abs(ptr->rear - ptr->front);
     }
-    else {
-        return (ptr->size - ptr->front) + (ptr->rear +1 ) ;
+    else
+    {
+        return (ptr->size - ptr->front) + (ptr->rear + 1);
     }
 }
 
