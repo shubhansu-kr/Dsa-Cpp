@@ -1,6 +1,7 @@
 // Bubble sort algo
 
 #include <iostream>
+
 using namespace std;
 
 void traversal(int A[], int n)
