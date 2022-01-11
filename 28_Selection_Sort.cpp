@@ -32,7 +32,7 @@ void Selectionsort(int A[], int n)
 {
     for (int i = 0; i < n - 1; i++)
     {
-        int x = 0;
+        int x = i;
         int min = A[i];
         for (int j = i + 1; j < n; j++)
         {
