@@ -57,10 +57,10 @@ int *merge(int A[], int m, int B[], int n)
 }
 */
 
-void mergesort(int A[], int low, int mid, int high)
+void merge(int A[], int low, int mid, int high)
 {
-    int i = low, j = mid + 1, k = 0;
-    int B[high + 1];
+    int i = low, j = mid + 1, k = low;
+    int B[10];
     while (i <= mid && j <= high)
     {
         if (A[i] < A[j])
@@ -88,9 +88,20 @@ void mergesort(int A[], int low, int mid, int high)
         k++;
         j++;
     }
-    for (int i = 0; i < 6; i++)
+    for (int i = low; i <= high; i++)
     {
         A[i] = B[i];
+    }
+}
+
+void mergesort(int A[], int low, int high)
+{
+    if (low < high)
+    {
+        int mid = (low + high) / 2;
+        mergesort(A, low, mid);
+        mergesort(A, mid + 1, high);
+        merge(A, low, mid, high);
     }
 }
 
@@ -122,7 +133,7 @@ int main()
 
     int A[] = {2, 23, 43, 3, 33, 65};
     display(A, 6);
-    mergesort(A, 0, 2, 5);
+    mergesort(A, 0, 5);
     display(A, 6);
 
     return 0;
