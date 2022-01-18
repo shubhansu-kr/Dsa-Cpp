@@ -14,7 +14,6 @@ struct node *createnode(int a)
 {
     struct node *n = (struct node *)malloc(sizeof(struct node));
     n->data = a;
-    n->height = 0;
     n->right = n->left = NULL;
     return n;
 }
