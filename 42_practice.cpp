@@ -135,8 +135,7 @@ struct node *inOrderpredecessor(struct node *ptr)
     return ptr;
 }
 
-/*
-struct node *  deleteElement(struct node *ptr, int a)
+struct node *deleteElement(struct node *ptr, int a)
 {
     if (ptr == NULL)
     {
@@ -151,11 +150,11 @@ struct node *  deleteElement(struct node *ptr, int a)
     {
         if (ptr->data > a)
         {
-            return deleteElement(ptr->left, a);
+            ptr->left = deleteElement(ptr->left, a);
         }
         else if (ptr->data < a)
         {
-            return deleteElement(ptr->right, a);
+            ptr->right = deleteElement(ptr->right, a);
         }
         else
         {
@@ -165,8 +164,8 @@ struct node *  deleteElement(struct node *ptr, int a)
             ptr->left = deleteElement(ptr->left, ptr->data);
         }
     }
+    return ptr;
 }
-*/
 
 int main()
 {
@@ -199,11 +198,11 @@ int main()
     // postOrderTraversal(root);
     // cout << endl;
 
-    cout << "BST test - " << isBST(root) << endl;
-    cout << "Enter the element to search " << endl;
-    // int n ;
-    // cin >> n;
-    // cout << "Element presence : " << searchElement(root, n) << endl;
+    // cout << "BST test - " << isBST(root) << endl;
+    // cout << "Enter the element to search " << endl;
+    //  int n ;
+    //  cin >> n;
+    //  cout << "Element presence : " << searchElement(root, n) << endl;
 
     // int n;
     // cout << "Enter the element you want to insert " << endl;
@@ -217,23 +216,24 @@ int main()
     //     root = insertElement(root, n);
     // }
 
-    /*
-        int n;
-        cout << "Enter the element you want to delete " << endl;
-        cin >> n;
-        if (searchElement(root, n))
-        {
-            deleteElement(root, n);
-        }
-        else
-        {
-            cout << n << " is not present in the bst " << endl;
-        } 
-    */
+    int n;
+    cout << "Enter the element you want to delete " << endl;
+    cin >> n;
+    if (searchElement(root, n))
+    {
+        deleteElement(root, n);
+    }
+    else
+    {
+        cout << n << " is not present in the bst " << endl;
+    }
 
     inOrderTraversal(root);
     cout << endl;
     cout << "BST test - " << isBST(root) << endl;
+    // The isBST function has a bug - since we are using a static prev
+    // it retains its value from last call and thus acts malacious in 
+    // next call . 
 
     return 0;
 }
